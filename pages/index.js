@@ -34,11 +34,9 @@ export default function Home() {
         <div className={styles.description}>
           <p>Hello, Maddie. Let's learn new Thai word</p>
         </div>
-
-        <div className={styles.center}>
-          <header>play the word by clicking on the images</header>
+        <div className={styles.description}>
+          <p>play the word by clicking on the images</p>
         </div>
-
         <div className={styles.grid}>
           <button onClick={() => playWord(1)}>
             <Image
