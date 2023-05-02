@@ -8,11 +8,18 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const [audio, setAudio] = useState(null);
-  const elementRef = useRef();
+  const elementRef1 = useRef();
+  const elementRef2 = useRef();
 
-  const playWord = () => {
-    const audio = elementRef.current;
-    console.log("play this word");
+  const playWord = (element) => {
+    let audio;
+    if (element === 1) {
+      audio = elementRef1.current;
+    } else {
+      audio = elementRef2.current;
+    }
+
+    console.log("audio", audio);
     audio.play();
   };
   return (
@@ -33,7 +40,7 @@ export default function Home() {
         </div>
 
         <div className={styles.grid}>
-          <button onClick={playWord}>
+          <button onClick={() => playWord(1)}>
             <Image
               src="https://images.unsplash.com/photo-1502082553048-f009c37129b9"
               width={200}
@@ -43,13 +50,13 @@ export default function Home() {
             />
             <audio
               id="tree"
-              ref={elementRef}
+              ref={elementRef1}
               src="/audio/tree.m4a"
               type="audio/mp4"
             ></audio>
           </button>
 
-          {/* <button onClick={playWord}>
+          <button onClick={() => playWord(2)}>
             <Image
               src="https://images.unsplash.com/photo-1579613832125-5d34a13ffe2a"
               width={200}
@@ -57,11 +64,12 @@ export default function Home() {
               alt="apple"
             />
             <audio
-              ref={(e) => setAudio(e)}
+              id="apple"
+              ref={elementRef2}
               src="/audio/apple-word.mp3"
               type="audio/mp4"
             ></audio>
-          </button> */}
+          </button>
         </div>
       </main>
     </>
